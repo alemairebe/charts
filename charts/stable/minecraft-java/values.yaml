@@ -60,7 +60,7 @@ j8j9Image:
   pullPolicy: Always
 mcBackupImage:
   repository: itzg/mc-backup
-  tag: latest@sha256:db4562d32f37fcf934e1bd42c475081e07a6f181b8318d9b706e0ad692f945f1
+  tag: latest@sha256:73231c76700a6097f9531448f2180fad254147385261007c42b2a5fc03a9e663
   pullPolicy: Always
 
 service:
