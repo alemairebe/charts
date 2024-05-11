@@ -19,7 +19,7 @@ args:
   {{- if or ( eq $config.protocol "http" ) ( eq $config.protocol "https" ) ( eq $config.protocol "tcp" ) }}
   {{- $_ := set $config "protocol" "tcp" }}
   {{- end }}
-  - "--entryPoints.{{$name}}.address=:{{ $config.port }}/{{ default "tcp" $config.protocol | lower }}"
+  - "--entryPoints.{{$name}}.address=:{{ $config.targetPort }}/{{ default "tcp" $config.protocol | lower }}"
   {{- end }}
   {{- end }}
   - "--api.dashboard=true"
@@ -94,7 +94,7 @@ args:
   {{/* end forwardedHeaders configuration */}}
   {{- if $config.redirectTo }}
   {{- $toPort := index $ports $config.redirectTo }}
-  - "--entrypoints.{{ $entrypoint }}.http.redirections.entryPoint.to=:{{ $toPort.port }}"
+  - "--entrypoints.{{ $entrypoint }}.http.redirections.entryPoint.to=:{{ $toPort.targetPort }}"
   - "--entrypoints.{{ $entrypoint }}.http.redirections.entryPoint.scheme=https"
   {{- else if $config.redirectPort }}
   {{ if gt $config.redirectPort 0.0 }}
